@@ -6,10 +6,7 @@ from Loaders.quote_loader import fetch_quote
 teams_webhook_url = "https://quantorillc.webhook.office.com/webhookb2/986a3528-9d9c-43aa-a313-28f621c59260@124ccfbd-07ea-44e3-8794-af8986d63809/IncomingWebhook/c314d4a9c25a47db931489749aa7d788/dfc6f754-1356-49de-9d68-a09d53f86f85"
 
 def send_to_teams(webhook_url: str, quote: str = None, author: str = None, image_url: str = None) -> None:
-    headers = {
-        "Content-Type": "application/json",
-    }
-
+    headers = {"Content-Type": "application/json",}
     if quote and author and image_url:
         message_data = {
             "type": "message",
@@ -50,11 +47,9 @@ def send_to_teams(webhook_url: str, quote: str = None, author: str = None, image
         print("Incomplete data. Quote, author, and image URL are required for sending.")
 
 def main():
-    # Fetch image
-    image_url = "https://picsum.photos/200/300"  # Replace with your image URL
+    image_url = "https://picsum.photos/200/300" 
     image_data = fetch_image_from_url(image_url)
     if image_data:
-        # Fetch quote
         quote = fetch_quote()
         if quote:
             send_to_teams(teams_webhook_url, quote=quote, author="Anonymous", image_url=image_url)
