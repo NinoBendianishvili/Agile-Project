@@ -6,7 +6,7 @@ def fetch_quote():
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        quote = data['quoteText']  # Access directly if the structure allows
+        quote = data['quoteText'] 
         return quote
     except Exception as e:
         print(f"Failed to fetch quote: {str(e)}")
